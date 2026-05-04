@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Harmony with Yourself</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0D1017;
+      --surface: #141920;
+      --surface2: #1a2030;
+      --accent: #7B8CDE;
+      --text: #e8eaf0;
+      --muted: #8a91a8;
+      --border: #1e2535;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Header */
+    header {
+      background: linear-gradient(160deg, #1a1f3a 0%, #0D1017 60%);
+      padding: 3.5rem 1.5rem 3rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .app-icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #1a1f3a, #2a3260);
+      border: 1px solid var(--border);
+      margin: 0 auto 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .app-label {
+      font-family: 'DM Serif Display', serif;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+    }
+
+    h1 {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.25;
+      margin-bottom: 0.6rem;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+
+    /* Main */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* Contact card */
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .contact-card:hover {
+      border-color: var(--accent);
+      background: var(--surface2);
+    }
+
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(123, 140, 222, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      flex-shrink: 0;
+    }
+
+    .contact-text strong {
+      display: block;
+      color: #fff;
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-text span {
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    /* Section title */
+    h2 {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 1rem;
+    }
+
+    /* FAQ */
+    .faq {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    details {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    details[open] {
+      border-color: rgba(123, 140, 222, 0.35);
+    }
+
+    summary {
+      padding: 1.1rem 1.4rem;
+      cursor: pointer;
+      font-weight: 400;
+      color: var(--text);
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '+';
+      color: var(--accent);
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-body {
+      padding: 0 1.4rem 1.1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 0.9rem;
+    }
+
+    .faq-body a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .faq-body a:hover { text-decoration: underline; }
+
+    /* Info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-bottom: 2.5rem;
+    }
+
+    @media (max-width: 480px) {
+      .info-grid { grid-template-columns: 1fr; }
+    }
+
+    .info-tile {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+    }
+
+    .info-tile .label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.3rem;
+    }
+
+    .info-tile .value {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.82rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+    footer span { margin: 0 0.5rem; opacity: 0.4; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="app-icon">🌙</div>
+  <p class="app-label">Harmony with Yourself</p>
+  <h1>Support</h1>
+  <p>We're here to help. Find answers below or reach out directly.</p>
+</header>
+
+<main>
+
+  <!-- Contact -->
+  <a class="contact-card" href="mailto:sergeynoma@gmail.com">
+    <div class="contact-icon">✉️</div>
+    <div class="contact-text">
+      <strong>Email Support</strong>
+      <span>sergeynoma@gmail.com — we reply within 48 hours</span>
+    </div>
+  </a>
+
+  <!-- FAQ -->
+  <h2>Frequently Asked Questions</h2>
+  <div class="faq">
+
+    <details>
+      <summary>How do I cancel my subscription?</summary>
+      <div class="faq-body">
+        Open your iPhone <strong>Settings → Apple ID → Subscriptions</strong>, find Harmony with Yourself, and tap <em>Cancel Subscription</em>. You keep access until the end of the current billing period.
+      </div>
+    </details>
+
+    <details>
+      <summary>How do I restore my purchases after reinstalling?</summary>
+      <div class="faq-body">
+        Open the app, go to <strong>Settings → Subscription</strong>, and tap <em>Restore Purchases</em>. Make sure you're signed in with the same Apple ID used when you originally subscribed.
+      </div>
+    </details>
+
+    <details>
+      <summary>How does the 7-day free trial work?</summary>
+      <div class="faq-body">
+        When you start a trial, you get full Premium access for 7 days at no charge. If you don't cancel before the trial ends, the Annual plan ($39.99/year) begins automatically. You can cancel at any time via iOS Settings.
+      </div>
+    </details>
+
+    <details>
+      <summary>Is my data private?</summary>
+      <div class="faq-body">
+        Yes. Your check-ins, reflections, and progress are stored <strong>locally on your device</strong> only. We don't sell your data and don't run ads. Deleting the app removes all local data permanently.
+      </div>
+    </details>
+
+    <details>
+      <summary>I was charged but I don't have Premium access. What do I do?</summary>
+      <div class="faq-body">
+        Go to <strong>Settings → Subscription → Restore Purchases</strong> inside the app. If that doesn't work, email us at <a href="mailto:sergeynoma@gmail.com">sergeynoma@gmail.com</a> and we'll resolve it within 48 hours.
+      </div>
+    </details>
+
+    <details>
+      <summary>Can I request a refund?</summary>
+      <div class="faq-body">
+        Refunds are handled by Apple. Visit <a href="https://reportaproblem.apple.com" target="_blank">reportaproblem.apple.com</a>, sign in with your Apple ID, find the charge, and request a refund. Apple typically processes requests within a few days.
+      </div>
+    </details>
+
+    <details>
+      <summary>Why did my check-in history disappear?</summary>
+      <div class="faq-body">
+        Harmony stores data locally on your device. If you reinstalled the app or restored your iPhone without a backup, local data may not be recoverable. We recommend keeping regular iOS backups via iCloud or iTunes.
+      </div>
+    </details>
+
+    <details>
+      <summary>What is the AI evening reflection?</summary>
+      <div class="faq-body">
+        Each evening, the app generates a personalized question based on your check-in history from the past 7 days. It's designed to prompt meaningful reflection — not generic prompts. This feature is available in Premium.
+      </div>
+    </details>
+
+  </div>
+
+  <!-- App info -->
+  <h2>App Information</h2>
+  <div class="info-grid">
+    <div class="info-tile">
+      <div class="label">Developer</div>
+      <div class="value">Sergei Ivanov</div>
+    </div>
+    <div class="info-tile">
+      <div class="label">Contact</div>
+      <div class="value">sergeynoma@gmail.com</div>
+    </div>
+    <div class="info-tile">
+      <div class="label">Platform</div>
+      <div class="value">iOS 16.1+</div>
+    </div>
+    <div class="info-tile">
+      <div class="label">Category</div>
+      <div class="value">Health & Fitness</div>
+    </div>
+    <div class="info-tile">
+      <div class="label">Pricing</div>
+      <div class="value">Free · Premium from $5.99/week</div>
+    </div>
+    <div class="info-tile">
+      <div class="label">Current Version</div>
+      <div class="value">1.0</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>© 2026 Sergei Ivanov
+    <span>·</span>
+    <a href="privacy.html">Privacy Policy</a>
+    <span>·</span>
+    <a href="terms.html">Terms of Use</a>
+  </p>
+</footer>
+
+</body>
+</html>
